@@ -1,0 +1,49 @@
+{
+    "name": "monorepo-project",
+    "version": "1.0.0",
+    "private": true,
+    "workspaces": [
+        "apps/*",
+        "packages/*"
+    ],
+    "scripts": {
+        "build": "pnpm --filter './packages/*' build && pnpm --filter './apps/*' build && next build",
+        "build:business": "pnpm --filter business build",
+        "build:docs": "pnpm --filter docs build",
+        "build:ui": "pnpm --filter @repo/ui build",
+        "build:utils": "pnpm --filter @repo/utils build",
+        "clean": "pnpm -r clean",
+        "dev": "next dev --port 3002",
+        "dev:all": "pnpm run dev & pnpm -r --parallel dev",
+        "dev:business": "pnpm --filter business dev",
+        "dev:docs": "pnpm --filter docs dev",
+        "dev:ui": "pnpm --filter @repo/ui dev",
+        "lint": "pnpm -r lint"
+    },
+    "dependencies": {
+        "@repo/ui": "workspace:*",
+        "@repo/utils": "workspace:*",
+        "class-variance-authority": "^0.7.1",
+        "clsx": "^2.1.1",
+        "lucide-react": "^0.454.0",
+        "next": "16.0.7",
+        "react": "19.2.1",
+        "react-dom": "19.2.1",
+        "tailwind-merge": "^2.5.5",
+        "tailwindcss-animate": "^1.0.7",
+        "tw-animate-css": "latest"
+    },
+    "devDependencies": {
+        "@tailwindcss/postcss": "^4.0.0",
+        "@types/node": "^22",
+        "@types/react": "19.2.7",
+        "@types/react-dom": "19.2.3",
+        "postcss": "^8.5",
+        "tailwindcss": "^4.1.9",
+        "typescript": "^5"
+    },
+    "packageManager": "pnpm@9.1.0",
+    "engines": {
+        "node": ">=18"
+    }
+}
